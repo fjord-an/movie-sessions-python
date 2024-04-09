@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 """
 Task 4:
 You are hired as a software coder for Movies4Us Pty Ltd located in Melbourne, Australia. 
@@ -10,7 +9,6 @@ For example, if Tim is 50th user to buy the movie ticket, your software program 
 comments to explain the progress.
 
 @author: Jordan
-@contributors: Dions, Brandon
 """
 import random as r #To simulate consumers buying tickets https://www.w3schools.com/python/module_random.asp
 
@@ -33,13 +31,11 @@ class TicketPurchase:
                 print(f"Thankyou for watching with us {self.username}! Your {user_purchase} tickets makes you the {self.reserved_tickets}th viewer!")
                 print(f"The number of tickets remaining is now {self.available_seats}.")
             else:
+                #If all tickets are issued and loop ends, print the message for the 201st user
                 print(f"\n\nThere are not enough tickets left to buy {user_purchase} tickets. There are just {self.available_seats} remaining.\nPlease purchase a lower amount of tickets or sign up to another movie session")  #Print if no more tickets are available
         else:
             print(f"\n{self.bold}All tickets have been issued, the session is full{self.unbold}\nThanks for watching with us {username}.")
 
-#If all tickets are issued and loop ends, print the message for the 201st user
-#if self.user_count == self.total_tickets:
-#    print("There are no more tickets.")
 
 def sessions(total_seats):
     movie_times = {
@@ -73,7 +69,7 @@ def sessions(total_seats):
 
             for times in movie_times[session]:
                 available_seats[f'{session}@{times}'] = r.randint(0,200)
-                #this variable is set to an arbitrary value to simulate a real box office scenario by using the randint() method from the 'random' module https://www.w3schools.com/python/ref_random_randint.asp
+                #^ this dictionary value ^ is set to an arbitrary number to attempt to simulate a real box office scenario by using the randint() method from the 'random' module; source: w3schools. (2024). Python Random randint() Method. https://www.w3schools.com/python/ref_random_randint.asp
         try:
             movie_selection = int(input(f"What Movie do you want to watch? {error}{prompt_spacing}"))
         except ValueError:
@@ -110,4 +106,4 @@ def sessions(total_seats):
 
 username = input('\n\nWelcome to Movies4Us, Please enter your username:\n\t\t\t\t\t->')
 
-TicketPurchase(username, sessions(200)).ticketDispenser()
+TicketPurchase(username, sessions(200)).ticketDispenser() #answered by: Flury, T. (2023). How do you pass a tuple to a function in Python? Quora. Retrieved 9 April 2024, from https://www.quora.com/How-do-you-pass-a-tuple-to-a-function-in-Python
